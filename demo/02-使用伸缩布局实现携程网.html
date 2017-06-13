@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 100%;
+            display: flex;
+            /*flex-flow:flex-direction\flex-wrap*/
+            flex-direction: column;
+        }
+        header{
+           flex: 1;
+            display: flex;
+        }
+        header > a{
+            flex: 1;
+            /*display: flex;*/
+        }
+        header > a > img {
+            width: 100%;
+            /*如果为img添加flex,那么无法使img自动收缩，只会主轴方向自动放大(变宽|变高)*/
+            /*flex: 1;*/
+        }
+        .items{
+            width: 100%;
+            padding:10px;
+            box-sizing: border-box;
+        }
+        .item{
+            width: 100%;
+            background-color: #ff9a72;
+            border-radius: 10px;
+            margin-top:10px;
+            display: flex;
+        }
+        .item:nth-of-type(2){
+            background-color: #8dff73;
+        }
+        .item:nth-of-type(3){
+            background-color: #51a7ff;
+        }
+        .item:nth-of-type(4){
+            background-color: #ffbcea;
+        }
+        .item > .left{
+            flex: 1;
+        }
+        .item > .right{
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item > .right > a{
+            /*不能直接为a标签设置flex:1,因为：它是在父容器宽度的基础之上进行宽度的自动计算 ，意味着，所有子元素加在一起都不可能超出父容器的宽度，也就意着不可能换行，如果需要强制换行，得为子元素设置具体的有可能超出父容器的宽度*/
+            width: 50%;
+            height: 50px;
+            display: block;
+            line-height: 50px;
+            text-align: center;color: #fff;
+            text-decoration: none;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            box-sizing: border-box;
+        }
+        .item > .right > a:nth-last-of-type(-n+2){
+            border-bottom: none;
+        }
+        .imgBlcok{
+            width: 100%;
+            display: flex;
+        }
+        .imgBlcok > a{
+            flex: 1;
+        }
+        .imgBlcok > a > img {
+            width: 100%;
+        }
+        footer{
+            width: 100%;
+        }
+        footer > nav{
+            height: 30px;
+            line-height: 30px;
+            border-top:1px solid #ccc;
+            border-bottom:1px solid #ccc;
+            display: flex;
+        }
+        footer > nav > a{
+            flex: 1;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        footer > p{
+            text-align: center;
+            line-height:25px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="javascript:;">
+            <img src="../images/banner.jpg" alt="">
+        </a>
+    </header>
+    <main class="items">
+        <section class="item">
+            <div class="left"></div>
+            <div class="right">
+                <a href="javascript:;">海外酒店</a>
+                <a href="javascript:;">团购</a>
+                <a href="javascript:;">特惠酒店</a>
+                <a href="javascript:;">客栈公寓</a>
+            </div>
+        </section>
+        <section class="item">
+            <div class="left"></div>
+            <div class="right">
+                <a href="javascript:;">海外酒店</a>
+                <a href="javascript:;">团购</a>
+                <a href="javascript:;">特惠酒店</a>
+                <a href="javascript:;">客栈公寓</a>
+            </div>
+        </section>
+        <section class="item">
+            <div class="left"></div>
+            <div class="right">
+                <a href="javascript:;">海外酒店</a>
+                <a href="javascript:;">团购</a>
+                <a href="javascript:;">特惠酒店</a>
+                <a href="javascript:;">客栈公寓</a>
+            </div>
+        </section>
+        <section class="item">
+            <div class="left"></div>
+            <div class="right">
+                <a href="javascript:;">海外酒店</a>
+                <a href="javascript:;">团购</a>
+                <a href="javascript:;">特惠酒店</a>
+                <a href="javascript:;">客栈公寓</a>
+            </div>
+        </section>
+        <div class="imgBlcok">
+            <a href="javascript:;">
+                <img src="../images/extra_1.png" alt="">
+            </a>
+            <a href="javascript:;">
+                <img src="../images/extra_2.png" alt="">
+            </a>
+        </div>
+    </main>
+    <footer>
+        <nav>
+            <a href="javascript:;">电话预订</a>
+            <a href="javascript:;">下载客户端</a>
+            <a href="javascript:;">我的订单</a>
+        </nav>
+        <p>
+            <a href="javascript:;">网站地图</a>&nbsp;
+            <a href="javascript:;">ENGLISH</a>&nbsp;
+            <a href="javascript:;">电脑版</a>
+        </p>
+        <p>&copy;2015 携程旅行</p>
+    </footer>
+</div>
+</body>
+</html>

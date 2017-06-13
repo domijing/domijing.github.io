@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .banner{
+            width: 560px;
+            height: 300px;
+            margin:100px auto;
+            position: relative;
+        }
+        ul{
+            width: 100%;
+            height: 100%;
+            list-style: none;
+            transform-style: preserve-3d;
+            /*transform: rotate3d(1,1,0,-30deg);*/
+        }
+        ul > li {
+            float: left;
+            width: 20%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            /*添加过渡效果*/
+            transition: transform 1s;
+        }
+        ul > li > span{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*background-color: red;*/
+        }
+        /*移动每一个li的第1个span*/
+        ul> li > span:nth-of-type(1){
+            transform: translateZ(150px);
+            background: url("../images/q1.jpg");
+        }
+        /*移动每一个li的第2个span*/
+        ul> li > span:nth-of-type(2){
+            transform: translateY(-150px) rotateX(90deg);
+            background: url("../images/q2.jpg");
+        }
+        /*移动每一个li的第3个span*/
+        ul> li > span:nth-of-type(3){
+            transform: translateZ(-150px) rotateX(180deg);
+            background: url("../images/q3.jpg");
+        }
+        /*移动每一个li的第4个span*/
+        ul> li > span:nth-of-type(4){
+            transform: translateY(150px) rotateX(-90deg);
+            background: url("../images/q4.jpg");
+        }
+
+        /*设置li的所有span的偏移*/
+        ul > li:nth-of-type(2) > span{
+            /*background-position: -100%;*/
+            /*如果写百分比：
+            偏移值=(容器的宽度-图片的宽度)*百分比
+            112-560=-448    -448*-100%=448px
+            112-560=-448*25%=-116*/
+            /*background-repeat: repeat;*/
+            /*background-position: 25%;*/
+            background-position: -112px;
+        }
+        ul > li:nth-of-type(3) > span{
+            background-position: -224px;
+        }
+        ul > li:nth-of-type(4) > span{
+            background-position: -336px;
+        }
+        ul > li:nth-of-type(5) > span{
+            background-position: -448px;
+        }
+
+        #next,#pre{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            line-height: 60px;
+            text-align: center;
+            color: #fff;
+            font-size: 40px;
+            top:120px;
+            text-decoration: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #next{
+            right: 0;
+        }
+        #pre{
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul>
+        <!--每一个li就是轮播图的某个部分。所以每一个li其实包含4 个面，每一个面显示出一幅完整的图片-->
+        <li>
+            <!--每一个span就是当前这幅图上的-->
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+    </ul>
+    <a href="javascript:;" id="next">&gt;</a>
+    <a href="javascript:;" id="pre">&lt;</a>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var bannerIndex=0;
+        /*节流阀*/
+        var flag=true;
+        document.querySelector("#next").onclick=function(){
+            if(flag==true){
+                /*修改标记*/
+                flag=false;
+                bannerIndex--;
+                /*所谓切割轮播，就是让每一个li的角度围绕x轴旋转*/
+                $(".banner li").each(function(index){
+                    $(this).css({
+                        /*transform是参照元素的最原始的状态*/
+                        "transform":"rotateX("+(bannerIndex*90)+"deg)",
+                        'transition-delay':index*0.2+'s'
+                    });
+                });
+                setTimeout(function(){
+                    flag=true;
+                },2000);
+            }
+        }
+
+        document.querySelector("#pre").onclick=function(){
+            if(flag==true){
+                /*修改标记*/
+                flag=false;
+                bannerIndex++;
+                /*所谓切割轮播，就是让每一个li的角度围绕x轴旋转*/
+                $(".banner li").each(function(index,value){
+                    $(this).css({
+                        /*transform是参照元素的最原始的状态*/
+                        "transform":"rotateX("+(bannerIndex*90)+"deg)",
+                        'transition-delay':index*0.2+'s'
+                    });
+                });
+                setTimeout(function(){
+                    flag=true;
+                },2000);
+            }
+        }
+    });
+</script>
+</body>
+</html>

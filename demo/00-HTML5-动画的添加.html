@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*添加动画：
+            1.必须：animation-name:你想添加的动画的名称--先创建好*/
+            animation-name: testAni;
+            /*2.必须：设置动画的时间长,以秒做为单位*/
+            animation-duration: 2s;
+            /*3.animation-delay:延迟*/
+            animation-delay: 2s;
+            /*4.animation-timing-function:时间函数*/
+            /*animation-timing-function: linear;*/
+            /*5.animation-iteration-count:动画执行的次数  infinite:无限次*/
+            /*animation-iteration-count: infinite;*/
+            /*6.animation-direction:normal | reverse | alternate | alternate-reverse*/
+            /*animation-direction: alternate-reverse;*/
+
+            /*添加动画执行开始和结束时的状态
+            forwards:保持动画结束时的状态
+            backwards:如果有延迟，那么动画也会立刻进入到动画的第一帧--添加延迟才能看到效果
+            both:两个都有*/
+            animation-fill-mode: both;
+
+            /*动画状态:running  paused*/
+            /*animation-play-state: paused;*/
+
+            /*简写：*/
+            /*animation: testAni 2s 0s alternate infinite steps(5);*/
+        }
+
+        /*创建动画:就是设置并创建多个关键帧的过程*/
+        @keyframes testAni {
+            /*from{
+                !*如果不添加代码，默认就使用元素原始的属性*!
+            }
+            to{
+                transform: translate3d(500px,500px,0);
+            }*/
+            0%{
+                transform: rotate(45deg);
+                /*如果不添加代码，默认就使用元素原始的属性*/
+                background-color: red;
+            }
+            50%{
+                transform: translate3d(500px,0px,0);
+                background-color: blue;
+                width: 400px;
+            }
+            100%{
+                transform: translate3d(500px,500px,0);
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<input type="button" id="run" value="播放">
+<input type="button" id="pause" value="暂停">
+<script>
+    var div=document.querySelector("div");
+    document.getElementById("run").onclick=function(){
+        div.style.animationPlayState="running";
+    }
+    document.getElementById("pause").onclick=function(){
+        div.style.animationPlayState="paused";
+    }
+</script>
+</body>
+</html>

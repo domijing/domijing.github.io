@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 800px;
+            height: 700px;
+            background-color: #ccc;
+            margin:0 auto;
+            /*设置伸缩布局*/
+            display: flex;
+            /*默认的主轴方向为row,应该设置为column*/
+            flex-direction: column;
+            /*默认的侧轴方向是拉伸*/
+            align-items: stretch;
+        }
+        header{
+             /*width: 100%;*/
+             height: 100px;
+             background-color: red;
+         }
+        main{
+            /*width: 100%;*/
+            flex: 1;
+            background-color: green;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+        aside{
+            /*设置了宽度*/
+            flex: 1;
+            background-color: purple;
+        }
+        article{
+            flex: 3;
+            background-color: hotpink;
+        }
+        footer{
+            /*width: 100%;*/
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header></header>
+    <main>
+        <aside></aside>
+        <article></article>
+    </main>
+    <footer></footer>
+</div>
+<!--伸缩布局
+1.display:flex:为一个容器设置伸缩布局，那么它的直接子元素就会成为一个伸缩项
+2.justify-content:用来设置子元素在主轴方向上的排列方式(flex-start|flex-end|center|space-between|space-around)，默认主轴是row
+3.flex-direction:设置主轴方向:row column row-reverse  column-reverse
+4.flex-wrap:设置子元素的总宽度如果超出的父元素的宽度，是否换行显示 warp|no-wrap|wrap-reverse
+5.flex-grow:定义子元素的扩展比例，默认不会扩展(意味着默认值为0)，计算的方式：当前元素的flex-grow/所有兄弟元素flex-grow和
+6.flex-shrink:定义子元素的收缩比例，默认每个元素进行相等比例的收缩(默认值为1)。计算的方式：当前元素的flex-shrink/所有兄弟元素flex-shrink和
+7.flex:flex-grow|flex-shrink|flex-basis
+8.align-items:设置所有子元素在侧轴方向上的排列方式 flex-start\flex-end|center|baseline|stretch
+9.align-self:设置单个子元素在侧轴方向上的排列方式-->
+</body>
+</html>
